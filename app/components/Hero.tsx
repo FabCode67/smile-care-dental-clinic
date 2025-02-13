@@ -7,22 +7,24 @@ const NavAndHero = () => {
 
   const navItems = [
     { name: 'Home', href: '#' },
-    { name: 'Services', href: '#services' },
     { name: 'About Us', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Insurances', href: '#insurances' },
+    { name: 'Team', href: '#tam' },
     { name: 'Contact', href: '#contact' }
   ];
 
   return (
-    <div className="relative">
+    <div id='#' className="relative">
       {/* Navbar */}
       <nav className="bg-white/90 backdrop-blur-sm fixed w-full z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                SMILE CARE
-              </h1>
+                <a href="#" className="flex items-center gap-2">
+                    <img src="/logo.png" alt="Smile Care" className="h-14" />
+                </a>
             </div>
 
             {/* Desktop Navigation */}

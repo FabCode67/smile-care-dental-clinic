@@ -8,14 +8,14 @@ import ContactAndFooter from './components/Contact'
 
 const page = () => {
   return (
-    <>
+    <div className='scrollbar-thin scroll-smooth scrollbar-thumb-blue-500 scrollbar-track-blue-100'>
       <NavAndHero />
       <AboutSection />
       <ServicesSection />
       <InsurancePartnersSection />
       <TeamSection />
       <ContactAndFooter />
-    </>
+    </div>
   )
 }
 

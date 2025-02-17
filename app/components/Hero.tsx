@@ -23,7 +23,7 @@ const NavAndHero = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
                 <a href="#" className="flex items-center gap-2">
-                    <img src="/logo.png" alt="Smile Care" className="h-14" />
+                    <img src="/images/logo.png" alt="Smile Care" className="h-14" />
                 </a>
             </div>
 

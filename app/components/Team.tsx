@@ -52,7 +52,7 @@ const TeamSection = () => {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 md:gap-8 gap-2 mb-16">
           {teamMembers.map((member, index) => (
             <div
               key={index}
@@ -74,23 +74,23 @@ const TeamSection = () => {
               </div>
 
               {/* Member Details */}
-              <div className="p-6 space-y-4">
+              <div className="md:p-6 p-2 md:text-base text-xs space-y-4">
                 <div className="flex items-center gap-2 text-gray-600">
-                  <Award className="w-5 h-5 text-blue-500" />
+                  <Award className="md:w-5 w-3 md:h-5 h-3 text-blue-500" />
                   <span>{member.specialization}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
-                  <GraduationCap className="w-5 h-5 text-blue-500" />
+                  <GraduationCap className="md:w-5 w-3 md:h-5 h-3 text-blue-500" />
                   <span>{member.education}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
-                  <Calendar className="w-5 h-5 text-blue-500" />
+                  <Calendar className="md:w-5 w-3 md:h-5 h-3 text-blue-500" />
                   <span>{member.availability}</span>
                 </div>
               </div>
 
               {/* Quick Contact */}
-              <div className="p-4 border-t border-gray-100 bg-gray-50">
+              <div className="p-4 border-t md:text-base text-xs border-gray-100 bg-gray-50">
                 <div className="flex justify-between">
                   <button className="flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors">
                     <Phone className="w-4 h-4" />

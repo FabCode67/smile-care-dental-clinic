@@ -20,7 +20,7 @@ const ContactAndFooter = () => {
             {/* Map Container */}
             <div className="bg-white rounded-2xl shadow-lg p-4 h-[400px] md:h-[500px]">
               <div className="w-full h-full rounded-xl overflow-hidden bg-gray-200">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.807636865456!2d30.321945885268125!3d-1.2896676953411703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dbf3002562f901%3A0xd98ca5fe872c671c!2sSmile%20care%20dental%20clinic!5e0!3m2!1sen!2srw!4v1739476507467!5m2!1sen!2srw" width="600" height="450"   loading="lazy"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.807636865456!2d30.321945885268125!3d-1.2896676953411703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dbf3002562f901%3A0xd98ca5fe872c671c!2sSmile%20care%20dental%20clinic!5e0!3m2!1sen!2srw!4v1739476507467!5m2!1sen!2srw"  height="450"   loading="lazy"></iframe>
               </div>
             </div>
 

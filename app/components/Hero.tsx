@@ -91,15 +91,6 @@ const NavAndHero = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-600/90 to-cyan-900/90" />
 
-        {/* Content */}
-
-        {/* - Appointment (thing) (via email, WhatsApp)
-- Amazina yabaganga namafoto.
-- Visibility (colors)
-- Fix the appointment button
-- Insurances */}
-
-
         <div className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
@@ -150,9 +141,9 @@ const NavAndHero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href='#about' className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <ChevronDown className="h-8 w-8 text-white opacity-70" />
-        </div>
+        </a>
       </div>
     </div>
   );

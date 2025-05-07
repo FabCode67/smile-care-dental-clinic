@@ -1,40 +1,87 @@
 'use client'
-import React, { useState } from 'react';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const NavAndHero = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect - only for color change
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Insurances', href: '#insurances' },
-    { name: 'Team', href: '#tam' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Ahabanza', href: '#' },
+    { name: 'Amakuru ukeneye', href: '#about' },
+    { name: 'Service Dutanga', href: '#services' },
+    { name: 'Ubwishingizi Dukorana', href: '#insurances' },
+    { name: 'Gusaba Rendevu', href: '#appointment' },
+    { name: 'Tuvugishe', href: '#contact' }
   ];
 
   return (
     <div id='#' className="relative">
-      {/* Navbar */}
-      <nav className="bg-white/90 backdrop-blur-sm fixed w-full z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Top Bar - Always Visible and Fixed */}
+      <div className="bg-red-600 text-white py-2 fixed top-0 w-full z-50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <div className="flex space-x-4">
+            <a href="#events" className="text-sm font-medium">EVENTS</a>
+            <a href="#blogs" className="text-sm font-medium">BLOGS</a>
+          </div>
+          <div className="text-sm hidden md:block">
+            MAIN BRANCH: JAMHURI STREET | CALL US NOW: +255 (0) 677 051 745
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navbar - Only Color Changes on Scroll */}
+      <nav 
+        className={`${
+          scrolled 
+            ? "bg-white shadow-lg" 
+            : "bg-red-600"
+        } fixed w-full z-40 transition-all duration-300`}
+        style={{ top: '40px' }} // Always below top bar
+      >
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-                <a href="#" className="flex items-center gap-2">
-                    <img src="/images/logo.png" alt="Smile Care" className="h-14" />
-                </a>
+              <a href="#" className="flex items-center gap-2">
+                <img src="/images/logo.png" alt="Smile Care" className="h-14" />
+                <div className={scrolled ? "text-red-600" : "text-white"}>
+                  <div className="text-2xl font-bold">Smiles</div>
+                  <div className="text-sm uppercase tracking-wider">DENTAL CLINIC</div>
+                </div>
+              </a>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-center space-x-8">
-                {navItems.map((item) => (
+              <div className="ml-10 flex items-center space-x-6">
+                {navItems.map((item, index) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+                    className={`${
+                      scrolled 
+                        ? "text-gray-700 hover:text-red-600" 
+                        : "text-white hover:text-yellow-200"
+                    } transition-colors duration-300 font-medium uppercase text-sm py-1 ${
+                      index === 0 ? (scrolled ? "border-b-2 border-red-600" : "border-b-2 border-white") : ""
+                    }`}
                   >
                     {item.name}
                   </a>
@@ -42,11 +89,17 @@ const NavAndHero = () => {
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="tel:0792497480" className="flex items-center text-gray-700 hover:text-blue-600">
-                <Phone className="h-5 w-5 mr-2" />
-                <span>0792497480</span>
+            {/* Appointment button - always visible, just changes color */}
+            <div className="hidden md:block">
+              <a 
+                href="#appointment" 
+                className={`px-6 py-2 ${
+                  scrolled 
+                    ? "bg-red-600 text-white" 
+                    : "bg-white text-red-600"
+                } rounded font-medium uppercase text-sm hover:opacity-90 transition-colors duration-300`}
+              >
+                Gusaba Rendevu
               </a>
             </div>
 
@@ -54,7 +107,7 @@ const NavAndHero = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-blue-600"
+                className={scrolled ? "text-gray-800" : "text-white"}
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -64,13 +117,17 @@ const NavAndHero = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
+          <div className={`md:hidden ${scrolled ? "bg-gray-100" : "bg-red-700"}`}>
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+                  className={`block px-3 py-2 uppercase text-sm ${
+                    scrolled 
+                      ? "text-gray-700 hover:text-red-600" 
+                      : "text-white hover:text-yellow-200"
+                  }`}
                 >
                   {item.name}
                 </a>
@@ -80,18 +137,18 @@ const NavAndHero = () => {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <div className="relative min-h-screen">
+      {/* Hero Section with appropriate spacing */}
+      <div className="relative min-h-screen pt-32">
         {/* Background Image Overlay */}
         <div 
-          className="absolute inset-1 bg-[url('/bunner.jpg')] bg-cover bg-center"
+          className="absolute inset-0 bg-[url('/bunner.jpg')] bg-cover bg-center"
           style={{
             backgroundBlendMode: 'overlay'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-600/90 to-cyan-900/90" />
 
-        <div className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
+        <div className="relative pt-16 pb-16 sm:pt-24 sm:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
               Welcome to{' '}
